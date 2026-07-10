@@ -6,4 +6,7 @@ profile = {
 print(profile["name"])
 print(profile.get("country"))
 profile["country"] = "Nigeria"
+profile.update ({"name": "confidence ugochi", "age": 19})
+#print(profile.popitem())
+
 print(profile)
