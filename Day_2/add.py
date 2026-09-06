@@ -12,7 +12,7 @@ print(x, y)
 
 x = input("Type a number:")
 y = input("Type another number:")
-sum = int(x) + int(y)
+sum = int(x) / int(y)
 print("the sum is:", sum)
 
 x = input("Type a text:")
