@@ -26,14 +26,22 @@ while True:
     
     # 2. Decide what to do based on the choice
     if choice == "1":
-        # Get extra info from the user
         item = input("Enter the item name: ")
-        amount = float(input("Enter the amount: "))  # Converted string to a number
+        
+        # --- Start of validated amount block ---
+        while True:
+            try:
+                amount = float(input("Enter the amount: "))
+                break  # Leaves the validation loop if it is a number
+            except ValueError:
+                print("Invalid input. Please enter a number (e.g., 1500 or 12.50).")
+        # --- End of validated amount block ---
+        
         category = input("Enter the category: ")
         
-        # Call our add function (updates the global expenses list)
         add_expenses(expenses, item, amount, category)
         print(f"'{item}' successfully added!")
+
         
     elif choice == "2":
         print("--- All Expenses ---")
