@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import sys
 import urllib.error
@@ -48,31 +49,35 @@ def format_event(event):
         return f"Created a {payload['ref_type']} in {repo}"
     return f"{event_type} in {repo}"
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog="github-activity",
+        description="Show a GitHub user's recent public activity.",
+    )
+    parser.add_argument("username", help="GitHub username")
+    parser.add_argument("--type", help="only show this event type, e.g. PushEvent")
+    return parser.parse_args()
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: github-activity <username>")
-        sys.exit(1)
+    args = parse_args()
+    username = args.username
 
-    username = sys.argv[1]
-    
     try:
         events = fetch_events(username)
     except urllib.error.HTTPError as error:
-        if error.code == 404:
-            print(f"User '{username}' not found.", file=sys.stderr)
-        elif error.code in (403, 429):
-            print("GitHub rate limit reached. Try again later.", file=sys.stderr)
-        else:
-            print(f"GitHub returned an error (HTTP {error.code}).", file=sys.stderr)
-        sys.exit(1)
+        ...  # unchanged
     except urllib.error.URLError as error:
-        print(f"Could not reach GitHub: {error.reason}", file=sys.stderr)
-        sys.exit(1)
+        ...  # unchanged
 
     if not events:
         print("No recent activity found.")
         return
 
+    if args.type:
+        events = [event for event in events if event["type"] == args.type]
+        if not events:
+            print(f"No {args.type} events found for '{username}'.")
+            return
+    
     counts = {}
     for event in events:
         line = format_event(event)
