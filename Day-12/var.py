@@ -1,4 +1,4 @@
-user_name = "Alice"
+user_name = "codo"
 def calculate_total_price(item_price, tax_rate):
       return item_price + (item_price * tax_rate)
 
