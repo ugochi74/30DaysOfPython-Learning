@@ -1,0 +1,13 @@
+{
+    "inventory": [
+        "sword",
+        "shield",
+        "protection",
+        "shelter",
+        "helmet"
+    ],
+    "hero": {
+        "name": "Arthur",
+        "score": 95
+    }
+}
