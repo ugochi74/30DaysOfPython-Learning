@@ -1,8 +1,8 @@
 from collections import Counter
 
 # Analyzing page views
-page_views = ["home", "about", "home", "contact", "home", "about", "home"]
+page_views = ["about", "home", "home", "contact", "home", "about", "home", "about", "about"]
 view_counts = Counter(page_views)
 
-print(view_counts)  # Counter({'home': 4, 'about': 2, 'contact': 1})
-print(view_counts.most_common(2))  # [('home', 4), ('about', 2)]
+print(view_counts)  
+print(view_counts.most_common(2))  
