@@ -25,3 +25,7 @@ class Solution:
                 total += current_value
                 
         return total
+
+solver = Solution()
+for s in ["III", "LVIII", "MCMXCIV"]:
+    print(f"{s}: {solver.romanToInt(s)}")
