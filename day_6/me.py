@@ -1,4 +1,4 @@
-import numpy as np
+import baseball_numpy as np
 import pandas as pd
 
 batch = pd.read_csv("batch.csv")
