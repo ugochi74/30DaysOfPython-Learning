@@ -12,6 +12,10 @@ haystack1 = "sadbutsad"
 needle = "sad"
 result = example.strStr(haystack1, needle)
 print(result)
+name = "shipson"
+res = "son"
+result1 = example.strStr(name, res)
+print(result1)
 # class Solution:
 #     def strStr(self, haystack: str, needle: str) -> int:
 #         return haystack.find(needle)
